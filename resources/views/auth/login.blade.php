@@ -15,16 +15,16 @@
         <form method="post" action="{{ route('inicio-sesion') }}" style="width: 20em; margin-top:1em;">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="text" class="form-control" id="password" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" name="password" placeholder="Password">
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Recuerdame</label>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>

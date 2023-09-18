@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     //
-    public function register(Request $request){
+    public function register(Request $request)
+    {
 
         $user = new User();
         $user->email = $request->email;
@@ -24,11 +25,33 @@ class LoginController extends Controller
     }
 
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
+
+        $credential = [
+            "email" => $request->email,
+            "password" => $request->password,
+            //"active" => true
+        ];
+
+        $remember = ($request->has('remember') ? true : false);
+
+        if (Auth::attempt($credential, $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('privada'));
+        } else {
+            return redirect(route('login'));
+        }
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+
+        return redirect(route('login'));
     }
 }

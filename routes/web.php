@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Route::view('/login', "auth.login")->name('login');
 Route::view('/registro', "auth.register")->name('registro');
-Route::view('/privada', "privada")->name('privada');
+Route::view('/privada', "privada")->middleware('auth')->name('privada');
 
 Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
 Route::post('/inicio-sesion',[LoginController::class,'login'])->name('inicio-sesion');
-Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
