@@ -28,7 +28,6 @@
 
             window.Echo.private(`show-properties`)
                 .listen('ShowProperties', (e) => {
-                    alert('hola')
                     console.log(e);
                 });
         }, false);
